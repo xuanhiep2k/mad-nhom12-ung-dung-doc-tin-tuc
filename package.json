@@ -1,0 +1,32 @@
+{
+  "name": "mad-nhom12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix frontend",
+    "server": "nodemon --inspect server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuanhiep2k/mad-nhon12-ung-dung-doc-tin-tuc.git"
+  },
+  "author": "peih_naux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuanhiep2k/mad-nhon12-ung-dung-doc-tin-tuc.git/issues"
+  },
+  "homepage": "https://github.com/xuanhiep2k/mad-nhon12-ung-dung-doc-tin-tuc.git#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
