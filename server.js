@@ -2,11 +2,15 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const connectDB = require('./config/db');
 
 const app = express();
 
 dotenv.config({path: 'config.env'});
 const port = process.env.PORT || 8000;
+
+//connect to DB
+connectDB();
 
 //use JSON
 app.use(express.json());
