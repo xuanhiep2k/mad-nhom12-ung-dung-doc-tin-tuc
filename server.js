@@ -2,15 +2,15 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const connectDB = require('./config/db');
+const connectDB = require('./config/dbMysql');
 
 const app = express();
 
+//connectDB
+connectDB.commit();
+
 dotenv.config({path: 'config.env'});
 const port = process.env.PORT || 8000;
-
-//connect to DB
-connectDB();
 
 //use JSON
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 //load routes
-app.use('/', require('./routes/'));
+app.use('/', require('./routes/routes'));
 
 app.listen(port, () =>{
     console.log(`PORT: ${port}`);
