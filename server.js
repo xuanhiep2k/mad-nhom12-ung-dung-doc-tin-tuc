@@ -7,10 +7,8 @@ const { errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
 dotenv.config({ path: 'config.env' });
-const port = process.env.PORT || 8000;
 
-//connect to DB
-connectDB();
+const port = process.env.PORT || 8000;
 
 //use JSON
 app.use(express.json());
