@@ -1,13 +1,10 @@
 const express = require('express');
-const routes = express.Router();
+const router = express.Router();
 
-//import Controllers
-const { register, login } = require('../controllers/usersCtrl');
+const categoryController = require('../controllers/categoryController.js');
+const articleController = require('../controllers/articleController.js');
+router.get('/category', categoryController.getAllCategories);
+router.get('/article', articleController.getAllArticles);
+router.get('/article/search/', articleController.getArticleBySlug);
 
-//route register
-routes.post('/register', register)
-
-//route login
-routes.post('/login', login)
-
-module.exports = routes;
+module.exports = router;
