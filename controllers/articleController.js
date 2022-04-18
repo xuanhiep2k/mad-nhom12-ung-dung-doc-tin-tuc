@@ -29,5 +29,30 @@ class ArticleController {
       return next(err);
     }
   }
+  async getArticleById(req, res, next) {
+    try {
+      const id = req.params.id;
+      const article = await articles.findById({ _id: id });
+      return res.json({
+        data: article,
+      });
+    } catch (err) {
+      return next(err);
+    }
+  }
+  async getArticleByTitle(req, res, next) {
+    try {
+      const { title } = req.query;
+      console.log('title', title);
+      const article = await articles.find({
+        title: { $regex: title, $options: 'i' }, // case insensitive string
+      });
+      return res.json({
+        data: article,
+      });
+    } catch (err) {
+      return next(err);
+    }
+  }
 }
 module.exports = new ArticleController();

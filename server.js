@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const { errorHandler } = require('./middlewares/errorHandler');
-
+connectDB();
 const app = express();
 dotenv.config({ path: 'config.env' });
 
