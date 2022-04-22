@@ -5,7 +5,13 @@ const connectDB = require('./config/db');
 const { errorHandler } = require('./middlewares/errorHandler');
 connectDB();
 const app = express();
-dotenv.config({ path: 'config.env' });
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({ path: 'config.env' });
+  console.log('ok in local env');
+} else {
+  console.log('ok in production env');
+}
 
 const port = process.env.PORT || 8000;
 
