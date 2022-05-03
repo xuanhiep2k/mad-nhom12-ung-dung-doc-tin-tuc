@@ -6,9 +6,7 @@ class ArticleController {
     try {
       await articles.find({}).then((listArticles) => {
         listArticles.map((article) => article.toObject());
-        return res.json({
-          data: listArticles,
-        });
+        return res.json([...listArticles]);
       });
     } catch (err) {
       return next(err);
@@ -21,10 +19,8 @@ class ArticleController {
         .findOne({
           slug: category,
         })
-        .populate('articles.article_id', ['title', 'content', 'img']);
-      return res.json({
-        data: categorySearchBySlug.articles,
-      });
+        .populate('articles', ['title', 'content', 'img']);
+      return res.json([...categorySearchBySlug.articles]);
     } catch (err) {
       return next(err);
     }
@@ -33,9 +29,7 @@ class ArticleController {
     try {
       const id = req.params.id;
       const article = await articles.findById({ _id: id });
-      return res.json({
-        data: article,
-      });
+      return res.json(article);
     } catch (err) {
       return next(err);
     }
@@ -47,9 +41,7 @@ class ArticleController {
       const article = await articles.find({
         title: { $regex: title, $options: 'i' }, // case insensitive string
       });
-      return res.json({
-        data: article,
-      });
+      return res.json(article);
     } catch (err) {
       return next(err);
     }
