@@ -5,12 +5,10 @@ class CategoryController {
     try {
       const listCategories = await categories
         .find({})
-        .populate('articles.article_id', ['title', 'content', 'image'])
+        .populate('articles', ['title', 'content', 'image'])
         .lean();
 
-      return res.json({
-        data: listCategories,
-      });
+      return res.json([...listCategories]);
     } catch (err) {
       return next(err);
     }
