@@ -14,6 +14,10 @@ const articleSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
+    category: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
 );

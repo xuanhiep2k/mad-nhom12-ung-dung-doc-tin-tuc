@@ -46,5 +46,21 @@ class ArticleController {
       return next(err);
     }
   }
+  async getArticleSaved(req, res, next) {
+    try {
+      if (req.body.arrId) {
+        const arrId = [...req.body.arrId];
+        const listArticles = [];
+        for (let i = 0; i < arrId.length; i++) {
+          let article = await articles.findById({ _id: arrId[i] });
+          listArticles.push(article);
+        }
+        return res.json(listArticles);
+      }
+      return res.send('Không có dữ liệu!');
+    } catch (err) {
+      return next(err);
+    }
+  }
 }
 module.exports = new ArticleController();
