@@ -12,10 +12,8 @@ const categorySchema = mongoose.Schema(
     },
     articles: [
       {
-        article_id: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'articles',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'articles',
       },
     ],
   },
