@@ -1,20 +1,16 @@
 const mongoose = require('mongoose');
 
-const articleSchema = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
-    title: {
+    username: {
       type: String,
       trim: true,
     },
-    content: {
+    password: {
       type: String,
       trim: true,
     },
-    img: {
-      type: String,
-      trim: true,
-    },
-    category: {
+    fullname: {
       type: String,
       trim: true,
     },
@@ -24,8 +20,7 @@ const articleSchema = mongoose.Schema(
         ref: 'comment',
       },
     ],
-  },
-  { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
+  }
 );
 
-module.exports = mongoose.model('articles', articleSchema);
+module.exports = mongoose.model('user', userSchema);

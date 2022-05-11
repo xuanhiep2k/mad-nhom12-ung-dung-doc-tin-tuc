@@ -37,7 +37,6 @@ class ArticleController {
   async getArticleByTitle(req, res, next) {
     try {
       const { title } = req.query;
-      console.log('title', title);
       const article = await articles.find({
         title: { $regex: title, $options: 'i' }, // case insensitive string
       });
@@ -58,6 +57,17 @@ class ArticleController {
         return res.json(listArticles);
       }
       return res.send('Không có dữ liệu!');
+    } catch (err) {
+      return next(err);
+    }
+  }
+  async getCommentOfArticle(req, res, next) {
+    try {
+      const id = req.params.id;
+      const article = await articles.findById({ _id: id })
+      .populate('comment', ['content', 'fullname', 'created_at', 'user', 'articles'])
+      .populate('user');
+      return res.json(article);
     } catch (err) {
       return next(err);
     }
