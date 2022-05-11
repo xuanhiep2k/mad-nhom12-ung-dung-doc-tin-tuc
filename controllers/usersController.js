@@ -10,27 +10,17 @@ const usersCtrl = {
             return next(error);
         }
     },
-    //register
-    // register: async(req, res) => {
-    //     try {
-    //         const { name, email, password, role } = req.body;
-    //         console.log(req.body)
-    //         if(!email || !password){
-    //             res.status(400).json({
-    //                 message: `Missing ${!email ? 'email' : 'password'}!`
-    //             })
-    //         }
+    // register
+    register: async(req, res) => {
+        try {
+            const { username, password, fullname } = req.body;
+            const user = await users.create({username, password, fullname});
+            res.json("success");
+        } catch (error) {
+            res.status(400).json({error});
+        }
+    },
 
-    //         const hashPassword = await bcrypt.hash(password, 10);;
-    //         await connectDB.query(`INSERT INTO users (name, email, password, role) VALUES ('${name}', '${email}', '${hashPassword}', '${role}')`, () => {
-    //             res.status(200).json({
-    //                 message: 'You registered sucessfully'
-    //             })
-    //         })
-    //     } catch (error) {
-    //         res.status(400).json({error});
-    //     }
-    // },
     //login
     login: async(req, res) => {
         try {

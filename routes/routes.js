@@ -12,11 +12,12 @@ router.get('/category/slug', categoryController.getCategoryBySlug);
 router.get('/', articleController.getAllArticles);
 router.get('/article/id/:id', articleController.getArticleById);
 router.get('/article/search/', articleController.getArticleByTitle);
-router.get('/article/saved', articleController.getArticleSaved);
+router.post('/article/saved/', articleController.getArticleSaved);
 
 //user checklogin
 router.post('/login/', userController.login);
 router.get('/getAllUsers', userController.getAllUsers);
+router.post('/register', userController.register);
 
 //comments
 router.get('/getAllComments', commentController.getAllComment);

@@ -47,8 +47,8 @@ class ArticleController {
   }
   async getArticleSaved(req, res, next) {
     try {
-      if (req.body.arrId) {
-        const arrId = [...req.body.arrId];
+      if (req.body) {
+        const arrId = [...req.body];
         const listArticles = [];
         for (let i = 0; i < arrId.length; i++) {
           let article = await articles.findById({ _id: arrId[i] });
